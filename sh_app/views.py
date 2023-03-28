@@ -8,8 +8,6 @@ import sys
 import os
 import traceback
 
-from sh_app.Errors import AppValidationError, AppError
-
 if os.environ.get("APP_DEBUG") == 'DEBUG_BRK':
     import debugpy
     print("===========1-DEBUG-BREAK======")
@@ -105,7 +103,7 @@ def about():
 # =================================================================================
 @application.route("/api/health", methods=["GET"])
 def health():
-    title="Модель АПІ шлюза ПФУ"
+    title="Remote debug demo"
     label="health"
     result={}
     log('Health check', label)
@@ -113,6 +111,7 @@ def health():
         log('Health check' , 'health')
         result= {}
         result["message"]= title
+        result["ok"]=True
         return json.dumps( result ), 200, {'Content-Type':'application/json'}
     except Exception as e: 
             ex_type, ex_value, ex_traceback = sys.exc_info()
@@ -133,7 +132,7 @@ def health():
 
 
 
-@application.route("/api/srvci", methods=["POST"])
+@application.route("/api/srvci", methods=["GET"])
 def srvci():
 
     label="srvci"
