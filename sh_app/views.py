@@ -137,16 +137,17 @@ def srvci():
 
     label="srvci"
     result={}
+    result["DB_HOST"]=os.environ.get("DB_HOST")
+    result["DB_PORT"]=os.environ.get("DB_PORT")
+    result["DB_NAME"]=os.environ.get("DB_NAME")
+    if result["DB_HOST"]==None:
+        raise InvalidAPIUsageR( "InvalidAPIRequestParams",  "No  ENV [DB_HOST!]", target=label,status_code=422, payload = {"code": "NoDefined ENV", "description": "Not defined env variable DB_HOST" } )
+    if result["DB_PORT"]==None:
+        raise InvalidAPIUsageR( "InvalidAPIRequestParams",  "No  ENV [DB_PORT!]", target=label,status_code=422, payload = {"code": "NoDefined ENV", "description": "Not defined env variable DB_PORT" } )
+    if result["DB_NAME"]==None:
+        raise InvalidAPIUsageR( "InvalidAPIRequestParams",  "No  ENV [DB_NAME!]", target=label,status_code=422, payload = {"code": "NoDefined ENV", "description": "Not defined env variable DB_NAME" } )
 
-    log('Приймаю відповідь від шлюза ПФУ'  , label)
-    body = request.get_json()
-    log('Вхідні дані: ' + json.dumps( body ) , label)
-    log('Трансформую в DICT ' , label)
-
-    body_dict = dict(body["Request"])
-    log('Перевіряю наявність ключа [operation]', label)
-    if not '_id' in body_dict:
-        raise InvalidAPIUsageR( "InvalidAPIRequestParams",  "No key [_id!]", target=label,status_code=422, payload = {"code": "NoKey", "description": "Не вказано обов'язковий ключ в запиті _id" } )
+    log('Відправляю результат: ', label)
     return json.dumps( result ), 200, {'Content-Type':'application/json'}
     
 
