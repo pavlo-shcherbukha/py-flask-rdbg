@@ -31,9 +31,9 @@ EXPOSE 8080
 # Remote debug run: packages
 # RUN pip install ptvsd debugpy
 # Remote debug run: Keeps Python from generating .pyc files in the container
-# ENV PYTHONDONTWRITEBYTECODE 1
+# ENV PYTHONDONTWRITEBYTECODE=1
 # Remote debug run: Turns off buffering for easier container logging
-# ENV PYTHONUNBUFFERED 1
+# ENV PYTHONUNBUFFERED=1
 # Remote debug run
 EXPOSE 5678
 
