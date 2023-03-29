@@ -3,18 +3,18 @@ call ..\login.cmd
 oc project %APP_PROJ%
 pause
 
-set fltempl=nodejs-ubi8docker-route-temp.yaml
-set fldepl=nodejs-ubi8docker-route-depl.yaml
+set fltempl=py-ubi8docker-route-temp.yaml
+set fldepl=py-ubi8docker-route-depl.yaml
  
 
 echo %APP_PROJ% .....
 
 echo %APP_DNS%   .....
 
-set APP_SERVICE_NAME=nodejs-ubi8docker-srvc
-set APP_NAME=nodejs-remote-debug
-set ROUTENAME=nodeubi8docker-srvc-%APP_PROJ%.%APP_DNS%
-set SRVHOSTNAME=nodeubi8docker-srvc-%APP_PROJ%.%APP_DNS%
+set APP_SERVICE_NAME=py-ubi8docker-srvc
+set APP_NAME=py-remote-debug
+set ROUTENAME=pyubi8docker-srvc-%APP_PROJ%.%APP_DNS%
+set SRVHOSTNAME=pyubi8docker-srvc-%APP_PROJ%.%APP_DNS%
 set PORTNUMBER=8080
 
 
