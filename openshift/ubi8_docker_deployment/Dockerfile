@@ -13,8 +13,9 @@ RUN /usr/bin/fix-permissions /tmp/src
 # Remote debug run
 #RUN echo "export PYTHONDONTWRITEBYTECODE=1 ; export PYTHONUNBUFFERED=1 ; python -m debugpy --listen 0.0.0.0:5678 --wait-for-client -m flask run -h 0.0.0.0 -p 8080" > /opt/app-root/etc/xapp.sh
 
-#RUN echo "export PYTHONUNBUFFERED=1" >> /opt/app-root/etc/xapp.sh
-#RUN echo "export PYTHONDONTWRITEBYTECODE=1" >> /opt/app-root/etc/xapp.sh
+RUN echo "PYTHONUNBUFFERED=1" >> /opt/app-root/etc/xapp.sh
+RUN echo "PYTHONDONTWRITEBYTECODE=1" >> /opt/app-root/etc/xapp.sh
+RUN printenv
 RUN echo "python -m debugpy --listen 0.0.0.0:5678 --wait-for-client -m flask run -h 0.0.0.0 -p 8080" >> /opt/app-root/etc/xapp.sh
 RUN chmod 777 /opt/app-root/etc/xapp.sh
 
@@ -31,9 +32,9 @@ EXPOSE 8080
 # Remote debug run: packages
 # RUN pip install ptvsd debugpy
 # Remote debug run: Keeps Python from generating .pyc files in the container
-ENV PYTHONDONTWRITEBYTECODE=1
+#ENV PYTHONDONTWRITEBYTECODE=1
 # Remote debug run: Turns off buffering for easier container logging
-ENV PYTHONUNBUFFERED=1
+#ENV PYTHONUNBUFFERED=1
 # Remote debug run
 EXPOSE 5678
 
