@@ -101,8 +101,10 @@ objects:
           - env:
             - name: APP_SCRIPT
               value: /opt/app-root/etc/xapp.sh
-            #- name: GUNICORN_CMD_ARGS
-            #  value: -k gevent --workers=1 --worker-connections=2000  --bind=0.0.0.0:8080 --access-logfile=-
+            - name: APP_DEBUG
+              value: 'DEBUG_BRK'  
+            - name: GUNICORN_CMD_ARGS
+              value: -k gevent --workers=1 --worker-connections=2000  --bind=0.0.0.0:8080 --access-logfile=-
             - name: FLASK_APP
               value: sh_app.webapp
             - name: APP_MODULE
@@ -111,6 +113,12 @@ objects:
               value: '0'
             - name: FLASK_ENV
               value: development
+            - name: DB_HOST
+              value: demo-couchdb
+            - name: DB_PORT
+              value: '80'
+            - name: DB_NAME
+              value: 'shdb'
             imagePullPolicy: Always
             name: "${APP_SERVICE_NAME}"
             resources: {}
