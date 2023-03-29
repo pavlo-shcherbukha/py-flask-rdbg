@@ -12,8 +12,9 @@ RUN /usr/bin/fix-permissions /tmp/src
 
 # Remote debug run
 #RUN echo "export PYTHONDONTWRITEBYTECODE=1 ; export PYTHONUNBUFFERED=1 ; python -m debugpy --listen 0.0.0.0:5678 --wait-for-client -m flask run -h 0.0.0.0 -p 8080" > /opt/app-root/etc/xapp.sh
-RUN echo "export PYTHONDONTWRITEBYTECODE=1" >> /opt/app-root/etc/xapp.sh
+
 RUN echo "export PYTHONUNBUFFERED=1" >> /opt/app-root/etc/xapp.sh
+RUN echo "export PYTHONDONTWRITEBYTECODE=1" >> /opt/app-root/etc/xapp.sh
 RUN echo "python -m debugpy --listen 0.0.0.0:5678 --wait-for-client -m flask run -h 0.0.0.0 -p 8080" >> /opt/app-root/etc/xapp.sh
 RUN chmod 777 /opt/app-root/etc/xapp.sh
 
