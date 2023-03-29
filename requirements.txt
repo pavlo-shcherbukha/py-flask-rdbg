@@ -1,0 +1,12 @@
+Flask
+gunicorn
+requests
+datetime
+gevent
+ptvsd 
+debugpy
+#redis
+#sqlalchemy
+#psycopg2[binary]
+cloudant
+#CouchDB2
